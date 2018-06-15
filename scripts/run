@@ -1,0 +1,8 @@
+#!/bin/bash
+
+docker run --rm \
+    --volume "$PWD/reports:/home/chrome/reports" \
+    --net 'host' \
+    --security-opt 'seccomp=lib/chrome.json' \
+    justinribeiro/lighthouse:latest \
+    lighthouse --chrome-flags="--headless --disable-gpu" $1
